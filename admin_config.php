@@ -77,9 +77,9 @@ class hits_ui extends e_admin_ui
 
 		  'hits_type' =>   array ( 'title' => LAN_TYPE, 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'batch' => true, 'filter' => true,  'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
 		  'hits_itemid' =>   array ( 'title' => 'Item ID', 'type' => 'number', 'data' => 'int', 'width' => 'auto', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
-		  'hits_counter' =>   array ( 'title' => 'Hits', 'type' => 'number', 'data' => 'int', 'width' => '8%',  'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
-		  'hits_unique' =>   array ( 'title' => 'Unique', 'type' => 'number', 'data' => 'int', 'width' => '8%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
-		  'hits_lastupdated' =>   array ( 'title' => 'Last Hit', 'type' => 'datestamp', 'data' => 'int', 'width' => 'auto', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
+		  'hits_counter' =>   array ( 'title' => 'Hits', 'type' => 'number', 'data' => 'int', 'width' => '8%',  'help' => '', 'readParms' => 'sep=,', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
+		  'hits_unique' =>   array ( 'title' => 'Unique', 'type' => 'number', 'data' => 'int', 'width' => '8%', 'help' => '', 'readParms' => 'sep=,', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
+		  'hits_lastupdated' =>   array ( 'title' => 'Last Hit', 'type' => 'datestamp', 'data' => 'int', 'width' => 'auto', 'help' => '', 'readParms' => 'mask=relative', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
 		  'options' =>   array ( 'title' => LAN_OPTIONS, 'type' =>'method', 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => true,  ),
 		);		
 		
