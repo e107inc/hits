@@ -79,8 +79,8 @@ class hits_ui extends e_admin_ui
 		  'hits_itemid' =>   array ( 'title' => 'Item ID', 'type' => 'number', 'data' => 'int', 'width' => 'auto', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
 		  'hits_counter' =>   array ( 'title' => 'Hits', 'type' => 'number', 'data' => 'int', 'width' => '8%',  'help' => '', 'readParms' => 'sep=,', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
 		  'hits_unique' =>   array ( 'title' => 'Unique', 'type' => 'number', 'data' => 'int', 'width' => '8%', 'help' => '', 'readParms' => 'sep=,', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
-		  'hits_lastupdated' =>   array ( 'title' => 'Last Hit', 'type' => 'datestamp', 'data' => 'int', 'width' => 'auto', 'help' => '', 'readParms' => 'mask=relative', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
-		  'options' =>   array ( 'title' => LAN_OPTIONS, 'type' =>'method', 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => true,  ),
+		  'hits_lastupdated' =>   array ( 'title' => 'Last Hit', 'type' => 'datestamp', 'data' => 'int', 'width' => 'auto', 'help' => '', 'readParms' => 'mask=relative', 'writeParms' => '', 'class' => 'right last', 'thclass' => 'right last',  ),
+		  'options' =>   array ( 'title' => LAN_OPTIONS, 'type' =>'method', 'nolist'=>true, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => false,  ),
 		);		
 		
 		protected $fieldpref = array('news_title','news_datestamp', 'hits_type', 'hits_counter', 'hits_unique', 'hits_lastupdated');
@@ -95,7 +95,7 @@ class hits_ui extends e_admin_ui
 		public function init()
 		{
 			// Set drop-down values (if any). 
-			$this->fields['hits_type']['writeParms']['optArray'] = array('hits_type_0','hits_type_1', 'hits_type_2'); // Example Drop-down array. 
+		//	$this->fields['hits_type']['writeParms']['optArray'] = array('hits_type_0','hits_type_1', 'hits_type_2'); // Example Drop-down array.
 
 			if(e_DEBUG === true)
 			{
@@ -193,7 +193,7 @@ class hits_ui extends e_admin_ui
 
 class hits_form_ui extends e_admin_form_ui
 {
-	function options($curval,$bla,$bla)
+	function options($curval,$bla,$bla2)
 	{
 		return '&nbsp;';
 
