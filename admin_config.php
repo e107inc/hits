@@ -103,6 +103,10 @@ class hits_ui extends e_admin_ui
 				$this->fields['hits_unique']['inline'] = true;
 				$this->batchDelete = true;
 			}
+			else
+			{
+				unset($this->fields['checkboxes']);
+			}
 		}
 
 		
