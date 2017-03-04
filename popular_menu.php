@@ -29,11 +29,12 @@
 		foreach($data as $row)
 		{
 
-			$repl = array($row['hits_counter'], $row['hits_unique']);
-			$template = str_replace($srch,$repl, $template);
+			$repl = array(intval($row['hits_counter']), intval($row['hits_unique']));
+			$tmpl = str_replace($srch,$repl, $template['item']);
 
 			$sc->setScVar('news_item', $row); // send $row values to shortcodes.
-			$text .= $tp->parseTemplate($template['item'], true, $sc); // parse news shortcodes.
+
+			$text .= $tp->parseTemplate($tmpl, true, $sc); // parse news shortcodes.
 
 		}
 
