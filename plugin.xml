@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e107Plugin name="Hits" lan="" version="1.0" date="2016-12-19" compatibility="2.0" installRequired="true" >
+<e107Plugin name="Hits" lan="LAN_PLUGIN_HITS_TITLE" version="1.0" date="2016-12-19" compatibility="2.0" installRequired="true" >
 	<author name="CaMer0n" url="http://e107.org" />
 	<summary lan="">Simple page hit-counter for e107 </summary>
-	<description lan="">Currently works with news to count how many times each news item is viewed.</description>
+	<description lan="LAN_PLUGIN_HITS_DIZ">Currently works with news to count how many times each news item is viewed.</description>
 	<keywords>
 		<word>stats</word>
 		<word>counter</word>

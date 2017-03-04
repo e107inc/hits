@@ -27,7 +27,7 @@ class hits_event // plugin-folder + '_event'
 	{
 
 		$event = array();
-
+		// @todo add preference page to configure which events to count.
 		$event[] = array(
 			'name'	=> "user_news_item_viewed", // when this is triggered... (see http://e107.org/developer-manual/classes-and-methods#events)
 			'function'	=> "counter", // ..run this function (see below).
@@ -37,7 +37,7 @@ class hits_event // plugin-folder + '_event'
 
 	}
 
-
+	//@todo make generic
 	function counter($data) // the method to run.
 	{
 
