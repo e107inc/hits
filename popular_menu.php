@@ -15,8 +15,10 @@
 		$limit = !empty($parm['limit']) ? intval($parm['limit']) : 5;
 
 
-		$query = "SELECT h.hits_counter,h.hits_unique, n.* FROM `#hits` AS h LEFT JOIN `#news` AS n ON h.hits_type = 'news'
-					AND h.hits_itemid = n.news_id ORDER BY h.hits_counter DESC LIMIT ".$limit;
+		$query = "SELECT h.hits_counter,h.hits_unique, n.*, c.* FROM `#hits` AS h
+					LEFT JOIN `#news` AS n ON h.hits_type = 'news' 	AND h.hits_itemid = n.news_id
+					LEFT JOIN `#news_category` AS c ON n.news_category = c.category_id
+					ORDER BY h.hits_counter DESC LIMIT ".$limit;
 
 		$data = e107::getDb()->retrieve($query,true);
 
