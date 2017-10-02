@@ -16,31 +16,76 @@ if(!defined('e107_INIT'))
 class hits_shortcodes extends e_shortcode
 {
 	public $override = false; // when set to true, existing core/plugin shortcodes matching methods below will be overridden. 
-
+	private $multi = false;
+	private $data = array();
 
 	function sc_hits_counter($parm = null)
 	{
+		if(!empty($parm['multi']))
+		{
+		//	$this->multi = true;
+		}
+
 		return $this->getData('hits_counter', 'news');
 	}
 
 	function sc_hits_unique($parm = null)
 	{
+		if(!empty($parm['multi']))
+		{
+		//	$this->multi = true;
+		}
+
 		return $this->getData('hits_unique', 'news');
 	}
 
 	private function getData($field, $type)
 	{
+
+
 		$sc = e107::getScBatch('news');
 		$sql = e107::getDb();
 		$row = $sc->getScVar('news_item');
+		$id = intval($row['news_id']);
 
-		if(!empty($row['news_id']) && $count = $sql->retrieve('hits', $field, "hits_type = '".$type."' AND hits_itemid = ".intval($row['news_id'])." LIMIT 1"))
+		if(empty($id))
 		{
-			$count = intval($count);
-			return number_format($count,0);
+			return false;
 		}
 
-		return false;
+		if(isset($this->data[$type][$id][$field]))
+		{
+			return (string) $this->data[$type][$id][$field];
+		}
+
+		if($this->multi === true)
+		{
+			 $rows = $sql->retrieve('hits', '*', "hits_type = '".$type."' ", true);
+
+			foreach($rows as $row)
+			{
+				$kid = intval($row['hits_itemid']);
+				$this->data[$type][$kid]['hits_counter'] = number_format(intval($row['hits_counter']),0);
+				$this->data[$type][$kid]['hits_unique'] = number_format(intval($row['hits_unique']),0);
+			}
+
+
+			if(isset($this->data[$type][$id][$field]))
+			{
+				return (string) $this->data[$type][$id][$field];
+			}
+		}
+
+
+		if(!empty($row['news_id']) && $count = $sql->retrieve('hits', $field, "hits_type = '".$type."' AND hits_itemid = ".$id." LIMIT 1"))
+		{
+			$count = intval($count);
+			$value = number_format($count,0);
+			$this->data[$type][$id][$field] = $value;
+			return $value;
+		}
+
+		return '0';
 
 	}
 
