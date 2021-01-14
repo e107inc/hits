@@ -11,8 +11,8 @@
 
 
 $POPULAR_MENU_TEMPLATE['default']['start'] 	= "<ul class='media-list unstyled list-unstyled popular-menu'>{SETIMAGE: w=100&h=100&crop=1}"; // set the {NEWSIMAGE} dimensions.
-$POPULAR_MENU_TEMPLATE['default']['item'] 	= '<li class="media">
-													  <div class="media-left media-top">
+$POPULAR_MENU_TEMPLATE['default']['item'] 	= '<li class="media mb-2">
+													  <div class="media-left media-top mr-3 me-3">
 															<a href="{NEWS_URL}">
 													      {NEWS_IMAGE: type=tag&class=media-object img-rounded&placeholder=1}
 															</a>
