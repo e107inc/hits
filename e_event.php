@@ -33,12 +33,28 @@ class hits_event // plugin-folder + '_event'
 			'function'	=> "counter", // ..run this function (see below).
 		);
 
+		$event[] = array(
+			'name'	=> "admin_news_delete",  // could be replaced with 'admin_ui_delete' when other areas are supported.
+			'function'	=> "delete", // ..run this function (see below).
+		);
+
+
+
 		return $event;
 
 	}
 
+	function delete($data = array())
+	{
+		if(!empty($data['table']) && !empty($data['id']))
+		{
+			e107::getDb()->delete('hits', "hits_type = '".$data['table']."' AND hits_itemid = ". (int) $data['id']);
+		}
+
+	}
+
 	//@todo make generic
-	function counter($data) // the method to run.
+	function counter($data = array()) // the method to run.
 	{
 
 
