@@ -2,14 +2,15 @@
 
 // Generated e107 Plugin Admin Area 
 
-require_once('../../class2.php');
+require_once(__DIR__.'/../../class2.php');
+
 if (!getperms('P')) 
 {
 	e107::redirect('admin');
 	exit;
 }
 
-// e107::lan('hits',true);
+e107::plugLan('hits', true, true);
 
 
 class hits_adminArea extends e_admin_dispatcher
@@ -33,16 +34,16 @@ class hits_adminArea extends e_admin_dispatcher
 		'main/list'			=> array('caption'=> LAN_MANAGE, 'perm' => 'P'),
 	//	'main/create'		=> array('caption'=> LAN_CREATE, 'perm' => 'P'),
 			
-		'main/prefs' 		=> array('caption'=> LAN_PREFS, 'perm' => '0'),
+	//	'main/prefs' 		=> array('caption'=> LAN_PREFS, 'perm' => '0'),
 
-		'main/custom'		=> array('caption'=> 'Build empty entries', 'perm' => '0')
+		'main/custom'		=> array('caption'=> LAN_HITS_ADMIN_01, 'perm' => '0')
 	);
 
 	protected $adminMenuAliases = array(
 		'main/edit'	=> 'main/list'				
 	);	
 	
-	protected $menuTitle = 'Hits';
+	protected $menuTitle = LAN_PLUGIN_HITS_TITLE;
 }
 
 
@@ -52,7 +53,7 @@ class hits_adminArea extends e_admin_dispatcher
 class hits_ui extends e_admin_ui
 {
 			
-		protected $pluginTitle		= 'Hits';
+		protected $pluginTitle		= LAN_PLUGIN_HITS_TITLE;
 		protected $pluginName		= 'hits';
 	//	protected $eventName		= 'hits-hits'; // remove comment to enable event triggers in admin. 		
 		protected $table			= 'hits';
@@ -73,13 +74,13 @@ class hits_ui extends e_admin_ui
 		  'hits_id' =>   array ( 'title' => LAN_ID, 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
 
 		  'news_title' =>   array ( 'title' => LAN_TITLE, 'type'=>'text', 'data' => false, 'width' => '40%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-		  'news_datestamp' =>   array ( 'title' => "Published", 'type'=>'datestamp', 'data' => false, 'width' => '10%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+		  'news_datestamp' =>   array ( 'title' => LAN_HITS_ADMIN_02, 'type'=>'datestamp', 'data' => false, 'width' => '10%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
 
 		  'hits_type' =>   array ( 'title' => LAN_TYPE, 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'batch' => true, 'filter' => true,  'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-		  'hits_itemid' =>   array ( 'title' => 'Item ID', 'type' => 'number', 'data' => 'int', 'width' => 'auto', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
-		  'hits_counter' =>   array ( 'title' => 'Hits', 'type' => 'number', 'data' => 'int', 'width' => '8%',  'help' => '', 'readParms' => 'sep=,', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
-		  'hits_unique' =>   array ( 'title' => 'Unique', 'type' => 'number', 'data' => 'int', 'width' => '8%', 'help' => '', 'readParms' => 'sep=,', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
-		  'hits_lastupdated' =>   array ( 'title' => 'Last Hit', 'type' => 'datestamp', 'data' => 'int', 'width' => 'auto', 'help' => '', 'readParms' => 'mask=relative', 'writeParms' => '', 'class' => 'right last', 'thclass' => 'right last',  ),
+		  'hits_itemid' =>   array ( 'title' => LAN_HITS_ADMIN_03, 'type' => 'number', 'data' => 'int', 'width' => 'auto', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
+		  'hits_counter' =>   array ( 'title' => LAN_PLUGIN_HITS_TITLE, 'type' => 'number', 'data' => 'int', 'width' => '8%',  'help' => '', 'readParms' => 'sep=,', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
+		  'hits_unique' =>   array ( 'title' => LAN_HITS_ADMIN_04, 'type' => 'number', 'data' => 'int', 'width' => '8%', 'help' => '', 'readParms' => 'sep=,', 'writeParms' => '', 'class' => 'right', 'thclass' => 'right',  ),
+		  'hits_lastupdated' =>   array ( 'title' => LAN_HITS_ADMIN_05, 'type' => 'datestamp', 'data' => 'int', 'width' => 'auto', 'help' => '', 'readParms' => 'mask=relative', 'writeParms' => '', 'class' => 'right last', 'thclass' => 'right last',  ),
 		  'options' =>   array ( 'title' => LAN_OPTIONS, 'type' =>'method', 'nolist'=>true, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => false,  ),
 		);		
 		
@@ -109,7 +110,10 @@ class hits_ui extends e_admin_ui
 			}
 		}
 
-		
+
+
+
+
 		// ------- Customize Create --------
 		
 		public function beforeCreate($new_data,$old_data)
@@ -161,7 +165,7 @@ class hits_ui extends e_admin_ui
 					$insertArray = array(
 						'hits_id' => 0,
 						'hits_type' => 'news',
-						'hits_itemid' => intval($row['news_id']),
+						'hits_itemid' => (int) $row['news_id'],
 						'hits_counter' => 0,
 						'hits_unique' => 0,
 					);
@@ -170,7 +174,7 @@ class hits_ui extends e_admin_ui
 
 				}
 
-				e107::getMessage()->addSuccess("Done");
+				e107::getMessage()->addSuccess(LAN_CREATED);
 
 				return e107::getMessage()->render();
 
@@ -178,16 +182,30 @@ class hits_ui extends e_admin_ui
 
 
 			$frm = e107::getForm();
-			$text = "Create empty records for all existing news items";
+			$text = "<div class='alert alert-block alert-info'>". LAN_HITS_ADMIN_06."</div>";
 
 			$text .= $frm->open('createHits','post');
 
-			$text .= $frm->button('submitHits',1,'submit',LAN_GO);
+			$text .= $frm->button('submitHits',1,'submit', LAN_CREATE);
 
 			$text .= $frm->close();
 
 			return $text;
 			
+		}
+
+		function renderHelp()
+		{
+			$text = LAN_HITS_ADMIN_07;
+
+			$srch = array('[',']');
+			$repl = array("<a href='".e_ADMIN."menus.php'>", "</a>" );
+
+			$text = str_replace($srch, $repl, $text);
+
+			return array('caption' => LAN_HELP, 'text' => $text);
+
+
 		}
 
 			
@@ -209,7 +227,6 @@ new hits_adminArea();
 
 require_once(e_ADMIN."auth.php");
 e107::getAdminUI()->runPage();
-
 require_once(e_ADMIN."footer.php");
-exit;
+
 

@@ -9,5 +9,5 @@
 	 */
 
 	define("LAN_PLUGIN_HITS_TITLE", "Hits");
-	define("LAN_PLUGIN_HITS_DIZ", "Currently works with news to count how many times each news item is viewed.");
+	define("LAN_PLUGIN_HITS_DIZ", "Display popular news items in their own panel/menu, ranked by the number of views each item has had.");
 	define("LAN_PLUGIN_HITS_POPULAR", "Popular");
