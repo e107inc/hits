@@ -10,17 +10,17 @@
 
 
 
-$POPULAR_MENU_TEMPLATE['default']['start'] 	= "<ul class='media-list unstyled list-unstyled popular-menu'>{SETIMAGE: w=100&h=100&crop=1}"; // set the {NEWSIMAGE} dimensions.
-$POPULAR_MENU_TEMPLATE['default']['item'] 	= '<li class="media mb-2">
+$POPULAR_MENU_TEMPLATE['default']['start'] 	= "<ul class='media-list card-body unstyled list-unstyled popular-menu'>{SETIMAGE: w=100&h=100&crop=1}"; // set the {NEWSIMAGE} dimensions.
+$POPULAR_MENU_TEMPLATE['default']['item'] 	= '<li class="media d-flex mt-3">
 													  <div class="media-left media-top mr-3 me-3">
 															<a href="{NEWS_URL}">
 													      {NEWS_IMAGE: type=tag&class=media-object img-rounded&placeholder=1}
 															</a>
 													  </div>
 													  <div class="media-body">
-													    <h4 class="media-heading">{NEWS_TITLE}</a></h4>
-													    <p>{NEWS_SUMMARY: limit=60}</p>
-													    <small>{GLYPH=fa-stats} {HITS_COUNTER}</small>
+													    <h4 class="media-heading">{NEWS_TITLE}</h4>
+													    <p>{NEWS_SUMMARY: limit=40}</p>
+													    <small>{GLYPH=fa-line-chart} {HITS_COUNTER}</small>
 													  </div>
 													  </li>';
 										
